@@ -1,11 +1,7 @@
 import random
-import os
-from measure_time import measure_time
-try:
-    from janome.tokenizer import Tokenizer
-    t = Tokenizer()
-except ImportError:
-    pass
+from janome.tokenizer import Tokenizer
+t = Tokenizer()
+
 
 class DB_txt_constructor:
     BEGIN = "__BOS__"
@@ -73,7 +69,6 @@ class Bot:
     BEGIN = "__BOS__"
     END = "__EOS__"
 
-    @measure_time
     def __init__(self, corpus_path):
         self.corpus_path = corpus_path
         self.triplet_list = self.DB2triplet()
@@ -123,7 +118,6 @@ class Bot:
         result = random.choice(candidate)
         return result
 
-    @measure_time
     def DB2triplet(self):
         """
         3-gramで分割されたコーパスを読み込む
